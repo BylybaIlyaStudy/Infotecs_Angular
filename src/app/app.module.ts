@@ -13,8 +13,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatDividerModule} from '@angular/material/divider';
-
+import { MatDividerModule } from '@angular/material/divider';
+import { MatSelectModule } from '@angular/material/select';
 import { Routes, RouterModule } from '@angular/router';
 
 const appRoutes: Routes =[
@@ -26,7 +26,8 @@ const appRoutes: Routes =[
 @NgModule({
     imports:      [ BrowserModule, FormsModule, HttpClientModule, 
                     BrowserAnimationsModule, MatTableModule, MatButtonModule, 
-                    MatInputModule, RouterModule.forRoot(appRoutes), MatDialogModule, MatDividerModule ],
+                    MatInputModule, RouterModule.forRoot(appRoutes), MatDialogModule, 
+                    MatDividerModule, MatSelectModule ],
     declarations: [ AppComponent, UsersComponent, UsersWithEventsComponent, ChangeNameDialogComponent ],
     bootstrap:    [ AppComponent ],
     entryComponents: [ ChangeNameDialogComponent ]

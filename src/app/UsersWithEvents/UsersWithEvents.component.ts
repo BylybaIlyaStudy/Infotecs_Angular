@@ -21,6 +21,8 @@ export class UsersWithEventsComponent implements OnInit, OnDestroy {
     displayedColumnsUsers: string[] = ['name', 'date'];
     displayedColumnsEvents: string[] = ['name', 'date', 'description', 'level'];
 
+    levels: string[] = ["low", "middle", "high"];
+
     users: UserStatistics[] = [];
     user: UserStatistics = new UserStatistics;
 
@@ -105,6 +107,7 @@ export class UsersWithEventsComponent implements OnInit, OnDestroy {
     displayedEvents: Events[] = [];
     
     createDescription() {
+        console.log(this.displayedEvents);
         this.http.createEventsDescription(this.displayedEvents);
 
         this.changeEnteringDescription();
@@ -114,11 +117,11 @@ export class UsersWithEventsComponent implements OnInit, OnDestroy {
         this.enteringDescription = !this.enteringDescription;
 
         if (this.enteringDescription) {
-            this.displayedColumnsEvents = ['name', 'description'];
+            this.displayedColumnsEvents = ['name', 'description', 'level'];
             this.displayedEvents = _.uniqBy(this.user.events, 'name');
         }
         else {
-            this.displayedColumnsEvents = ['name', 'date', 'description'];
+            this.displayedColumnsEvents = ['name', 'date', 'description', 'level'];
             this.displayedEvents = this.user.events;
         }
     }

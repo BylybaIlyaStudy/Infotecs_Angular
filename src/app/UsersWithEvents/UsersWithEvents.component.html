@@ -21,7 +21,7 @@
     <p>Идентификатор: {{user.id}}</p>
     <p>Версия ПО ViPNet Client: {{user.version}}</p>
     <b>События ViPNet Client</b>
-    <button class="edit" *ngIf="!enteringDescription" mat-stroked-button (click) = "changeEnteringDescription()">Редактировать описания</button>
+    <button class="edit" *ngIf="!enteringDescription" mat-stroked-button (click) = "changeEnteringDescription()">Редактировать события</button>
     <button class="confirm" *ngIf="enteringDescription" mat-stroked-button (click) = "createDescription()">Подтвердить</button>
     <button class="cancel" *ngIf="enteringDescription" mat-stroked-button (click) = "changeEnteringDescription()">Отменить</button>
 
@@ -47,7 +47,16 @@
         </ng-container>
         <ng-container matColumnDef="level">
             <th mat-header-cell *matHeaderCellDef> Уровень </th>
-            <td mat-cell *matCellDef="let item"> {{item.level}} </td>
+            <td mat-cell *matCellDef="let item"> 
+                <p *ngIf="!enteringDescription">{{item.level}}</p> 
+                <div *ngIf="enteringDescription">
+                    <mat-select [(value)]="item.level">
+                        <mat-option value="low">low</mat-option>
+                        <mat-option value="middle">middle</mat-option>
+                        <mat-option value="high">high</mat-option>
+                      </mat-select>
+                </div>
+            </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumnsEvents"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumnsEvents;"></tr>
